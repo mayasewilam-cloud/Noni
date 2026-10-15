@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E0F7FA" />
+      <stop offset="100%" stop-color="#FFF3E0" />
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#bg3)" />
+  <circle cx="200" cy="200" r="110" fill="#FFFFFF" opacity="0.85" />
+  
+  <!-- Flower & Ocean Sun Sparkles -->
+  <g transform="translate(150, 140)">
+    <!-- Sunflower / Daisy -->
+    <circle cx="50" cy="50" r="18" fill="#F5E5C7" stroke="#966914" stroke-width="2.5"/>
+    <ellipse cx="50" cy="20" rx="9" ry="16" fill="#91D5F5" opacity="0.9"/>
+    <ellipse cx="50" cy="80" rx="9" ry="16" fill="#91D5F5" opacity="0.9"/>
+    <ellipse cx="20" cy="50" rx="16" ry="9" fill="#F6B7D2" opacity="0.9"/>
+    <ellipse cx="80" cy="50" rx="16" ry="9" fill="#F6B7D2" opacity="0.9"/>
+    <ellipse cx="28" cy="28" rx="12" ry="12" fill="#D8EEFF"/>
+    <ellipse cx="72" cy="72" rx="12" ry="12" fill="#D8EEFF"/>
+    <ellipse cx="28" cy="72" rx="12" ry="12" fill="#FFE066"/>
+    <ellipse cx="72" cy="28" rx="12" ry="12" fill="#FFE066"/>
+    <circle cx="50" cy="50" r="14" fill="#FFE066"/>
+  </g>
+  
+  <text x="200" y="325" font-family="sans-serif" font-size="18" font-weight="bold" fill="#103657" text-anchor="middle">Iconic Duo Energy 🌸🌊</text>
+  <text x="200" y="355" font-family="sans-serif" font-size="13" fill="#2E5B82" text-anchor="middle">Unmatched vibes, inside jokes &amp; joy</text>
+</svg>

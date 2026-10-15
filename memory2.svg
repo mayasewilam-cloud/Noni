@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 375" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFDF9" />
+      <stop offset="100%" stop-color="#E2F1FD" />
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#bg2)" />
+  <circle cx="250" cy="170" r="110" fill="#FFFFFF" opacity="0.85" />
+  
+  <!-- Two Coffee Cups -->
+  <g transform="translate(160, 115)">
+    <!-- Cup 1 (Blue) -->
+    <rect x="15" y="30" width="55" height="65" rx="10" fill="#91D5F5" stroke="#103657" stroke-width="3"/>
+    <path d="M 15 45 Q 0 45 0 60 Q 0 75 15 75" fill="none" stroke="#103657" stroke-width="3"/>
+    <path d="M 35 15 Q 40 5 35 -5" fill="none" stroke="#A0AEC0" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M 48 18 Q 53 8 48 -2" fill="none" stroke="#A0AEC0" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Heart on cup -->
+    <path d="M 42 60 C 37 53 32 57 42 67 C 52 57 47 53 42 60 Z" fill="#FFFFFF"/>
+    
+    <!-- Cup 2 (Pink) -->
+    <rect x="90" y="38" width="50" height="57" rx="10" fill="#F6B7D2" stroke="#103657" stroke-width="3"/>
+    <path d="M 140 50 Q 155 50 155 63 Q 155 76 140 76" fill="none" stroke="#103657" stroke-width="3"/>
+    <path d="M 110 24 Q 115 14 110 4" fill="none" stroke="#A0AEC0" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M 122 26 Q 127 16 122 6" fill="none" stroke="#A0AEC0" stroke-width="2.5" stroke-linecap="round"/>
+    <!-- Star on cup -->
+    <polygon points="115,58 118,65 125,65 120,70 122,77 115,72 108,77 110,70 105,65 112,65" fill="#FFFFFF"/>
+  </g>
+  
+  <text x="250" y="275" font-family="sans-serif" font-size="17" font-weight="bold" fill="#103657" text-anchor="middle">Endless Coffee Talks ☕</text>
+  <text x="250" y="302" font-family="sans-serif" font-size="13" fill="#2E5B82" text-anchor="middle">Losing track of time every single time</text>
+</svg>
