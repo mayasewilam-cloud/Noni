@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="theme-color" content="#91D5F5">
+  <meta name="description" content="A Top-Secret Birthday Mission for My Best Friend Noni">
+  <title>A Top-Secret Birthday Mission 💙</title>
+
+  <!-- Artistic Google Fonts: Playfair Display (Artistic Editorial Serif), Caveat (Calligraphy/Handwritten), Plus Jakarta Sans (Chic Modern Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Application Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+  <!-- Accessible Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main mission</a>
+
+  <!-- Ambient Floating Background Particles -->
+  <div class="ambient-decorations" aria-hidden="true">
+    <span class="floating-sparkle" style="top: 8%; left: 12%; animation-delay: 0s;">✨</span>
+    <span class="floating-sparkle" style="top: 22%; right: 15%; animation-delay: 1.5s;">⭐</span>
+    <span class="floating-sparkle" style="top: 55%; left: 8%; animation-delay: 3s;">💫</span>
+    <span class="floating-sparkle" style="top: 75%; right: 10%; animation-delay: 4.5s;">✨</span>
+    <span class="floating-sparkle" style="top: 88%; left: 20%; animation-delay: 2s;">💙</span>
+  </div>
+
+  <!-- Confetti Canvas Overlay -->
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+  <!-- Mission Header with Subtle Progress Indicator -->
+  <header class="app-header" role="banner">
+    <div class="header-top">
+      <div class="mission-badge">
+        <span class="mission-badge-icon">⭐</span>
+        <span id="mission-badge-text">Mission Step 1 of 8</span>
+      </div>
+      <nav class="nav-controls" aria-label="Mission Controls">
+        <button id="btn-prev-stage" class="btn-icon" aria-label="Go to previous step" title="Previous step" disabled>
+          ←
+        </button>
+      </nav>
+    </div>
+
+    <!-- Progress Tracker Dots -->
+    <div class="progress-track-wrapper" aria-label="Mission progress">
+      <div class="progress-track-line">
+        <div id="progress-track-fill" class="progress-track-fill"></div>
+      </div>
+      <div class="progress-step-item active" data-step="1">1</div>
+      <div class="progress-step-item" data-step="2">2</div>
+      <div class="progress-step-item" data-step="3">3</div>
+      <div class="progress-step-item" data-step="4">4</div>
+      <div class="progress-step-item" data-step="5">5</div>
+      <div class="progress-step-item" data-step="6">6</div>
+      <div class="progress-step-item" data-step="7">7</div>
+      <div class="progress-step-item" data-step="8">8</div>
+    </div>
+  </header>
+
+  <!-- Main Stage Container -->
+  <main id="main-content" class="main-stage-container" role="main">
+
+    <!-- ====================================================================
+         SCREEN 1: THE SECRET MISSION
+         ==================================================================== -->
+    <section id="stage-1" class="stage-screen active" aria-labelledby="stage-1-title">
+      <article class="card-glass card-center">
+        <span class="character-tag">Top-Secret Birthday Mission</span>
+
+        <!-- Handcrafted Bubbles Character Illustration -->
+        <div id="bubbles-avatar-1" class="bubbles-hero-container" aria-hidden="true"></div>
+
+        <h1 id="stage-1-title" class="stage-title">Hey, <span class="var-recipient-name">Noni</span>! 💙</h1>
+
+        <div class="stage-text">
+          <p>You’ve been selected for a top-secret birthday mission.</p>
+          <p>Your mission involves surprises, memories, and absolutely <strong>NO spoilers</strong>.</p>
+          <p>Are you ready?</p>
+        </div>
+
+        <div class="button-group">
+          <button id="btn-accept-mission" class="btn btn-primary">
+            Accept my mission! 🚀
+          </button>
+        </div>
+      </article>
+    </section>
+
+
+    <!-- ====================================================================
+         SCREEN 2: THE BIRTHDAY QUESTION (DODGE & EXCUSE ME DIALOGUE)
+         ==================================================================== -->
+    <section id="stage-2" class="stage-screen" aria-labelledby="stage-2-title">
+      <article class="card-glass card-center">
+        <span class="character-tag">Protocol Check</span>
+
+        <div id="bubbles-avatar-2" class="bubbles-hero-container" aria-hidden="true"></div>
+
+        <h1 id="stage-2-title" class="stage-title">A quick question first...</h1>
+
+        <div class="stage-text">
+          <p style="font-size: 1.15rem; font-weight: 700; color: var(--blue-deep);">
+            “Do you want to celebrate your birthday with a little surprise?”
+          </p>
+        </div>
+
+        <div class="button-group">
+          <button id="btn-screen2-yes" class="btn btn-primary">
+            YES, TELL ME EVERYTHING! ✨
+          </button>
+          <button id="btn-screen2-choice" class="btn btn-secondary" style="transition: transform 0.25s ease;">
+            Hmm… do I have a choice? 😜
+          </button>
+        </div>
+
+        <!-- Playful Non-Obstructive Callout with progressive dodge messages -->
+        <div id="screen2-playful-callout" class="playful-callout" role="alert">
+          <span class="playful-callout-icon" aria-hidden="true">💙</span>
+          <div id="screen2-callout-text" class="playful-callout-content">
+            <strong>Bubbles says:</strong><br>
+            “Girl, you know you’re going to have to say yes eventually! 😂”
+          </div>
+        </div>
+      </article>
+    </section>
+
+
+    <!-- ====================================================================
+         SCREEN 3: THE CINEMA MEMORY (BARBIE GLOW & ZENDAYA ODYSSEY)
+         ==================================================================== -->
+    <section id="stage-3" class="stage-screen" aria-labelledby="stage-3-title">
+      <article class="card-glass card-center">
+        <span class="character-tag">Memory Archive</span>
+
+        <div id="bubbles-avatar-3" class="bubbles-hero-container" aria-hidden="true"></div>
+
+        <h1 id="stage-3-title" class="stage-title">Remember our cinema date? 🎬</h1>
+
+        <div class="stage-text">
+          <p>Two very different worlds. One memory we share. And a little surprise inspired by it…</p>
+          <p style="font-size: 0.85rem; color: var(--blue-muted);">Tap each clue card below to inspect the atmospheric hints:</p>
+        </div>
+
+        <!-- Interactive Clue Cards -->
+        <div class="clue-cards-grid">
+          <!-- Barbie Clue Card -->
+          <div id="clue-card-barbie" class="clue-card clue-card-barbie" role="button" tabindex="0" aria-expanded="false">
+            <span id="barbie-clue-tag" class="clue-tag">CLUE 01 • PINK & CINEMA</span>
+            <div class="clue-title">
+              <span id="barbie-clue-title">The Barbie Glow</span>
+              <span aria-hidden="true">💖</span>
+            </div>
+            <div class="clue-prompt-hint">
+              <span>👉 Tap to inspect clue</span>
+            </div>
+            <div id="barbie-clue-body" class="clue-secret-reveal">
+              Remember how Barbie looked so effortlessly glowing, iconic, and radiant on screen? That dazzling, pretty glow that lights up the room—that's what your first present is inspired by.
+            </div>
+          </div>
+
+          <!-- Odyssey Clue Card -->
+          <div id="clue-card-odyssey" class="clue-card clue-card-odyssey" role="button" tabindex="0" aria-expanded="false">
+            <span id="odyssey-clue-tag" class="clue-tag">CLUE 02 • GOLD & ADVENTURE</span>
+            <div class="clue-title">
+              <span id="odyssey-clue-title">The Odyssey &amp; Zendaya's Premiere</span>
+              <span aria-hidden="true">🌊</span>
+            </div>
+            <div class="clue-prompt-hint">
+              <span>👉 Tap to inspect clue</span>
+            </div>
+            <div id="odyssey-clue-body" class="clue-secret-reveal">
+              Think of how breathtaking, sculpted, and ethereal Zendaya looked at the premiere—golden light, ocean goddess energy, and cinematic perfection. Your first gift has everything to do with that feeling.
+            </div>
+          </div>
+        </div>
+
+        <div class="stage-text" style="margin-top: 0.5rem;">
+          <p><em>Your first present has a connection to these glowing memories. Can you guess what it is?</em></p>
+        </div>
+
+        <div class="button-group">
+          <button id="btn-to-gift-box" class="btn btn-primary">
+            Reveal a little more 🎁
+          </button>
+        </div>
+      </article>
+    </section>
+
+
+    <!-- ====================================================================
+         SCREEN 4: PART ONE — THE MYSTERY GIFT
+         ==================================================================== -->
+    <section id="stage-4" class="stage-screen" aria-labelledby="stage-4-title">
+      <article class="card-glass card-center">
+        <span class="character-tag">Surprise Part One</span>
+
+        <h1 id="stage-4-title" class="stage-title">A Sealed Keepsake</h1>
+
+        <p class="stage-text" style="margin-bottom: 0.5rem;">
+          Tap the gift box below to open the lid slightly:
+        </p>
+
+        <!-- Interactive Mystery Gift Box -->
+        <div class="giftbox-stage-wrapper">
+          <div id="interactive-gift-box" class="gift-box-interactive" role="button" tabindex="0" aria-label="Interactive Mystery Gift Box. Tap to open lid." aria-expanded="false">
+            <div class="gift-glow-effect" aria-hidden="true"></div>
+            <div class="gift-bow" aria-hidden="true">🎀</div>
+            <div class="gift-box-lid" aria-hidden="true"></div>
+            <div class="gift-box-body" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <!-- Glowing Secret Card -->
+        <div id="mystery-letter-card" class="mystery-letter-card" role="region" aria-label="Mystery Gift Message">
+          <p id="mystery-quote-text" class="mystery-quote">
+            “Some days become memories.<br>
+            Some memories deserve a little something you can keep.”
+          </p>
+          <p id="mystery-sub-text" style="font-size: 0.95rem; color: var(--blue-deep);">
+            This is your first surprise — inspired by cinema, glowing elegance, and our shared memories. (No, I’m not giving away the secret just yet! 💌)
+          </p>
+          <div class="mystery-badge-locked">
+            🔒 Physical gift identity strictly sealed until we meet!
+          </div>
+        </div>
+
+        <div class="button-group" style="margin-top: 1.5rem;">
+          <button id="btn-to-spa-reveal" class="btn btn-primary">
+            Okay, what else have you planned? 🩵
+          </button>
+        </div>
+      </article>
+    </section>
+
+
+    <!-- ====================================================================
+         SCREEN 5: PART TWO — MASSAGE & JACUZZI IN SHEIKH ZAYED
+         ==================================================================== -->
+    <section id="stage-5" class="stage-screen" aria-labelledby="stage-5-title">
+      <article class="card-glass card-center">
+        <span class="character-tag" style="background: #E0F4F7; color: var(--spa-teal);">Surprise Part Two</span>
+
+        <div id="bubbles-avatar-5" class="bubbles-hero-container" aria-hidden="true"></div>
+
+        <h1 id="stage-5-title" class="stage-title">Surprise number two: pure relaxation for YOU. 🩵</h1>
+
+        <!-- Sheikh Zayed Solo Highlight Card -->
+        <div class="spa-header-accent">
+          <span class="spa-location-icon" aria-hidden="true">🌿</span>
+          <div>
+            <div class="spa-location-title">Sheikh Zayed, Egypt</div>
+            <div class="spa-solo-pill">✨ 100% Solo Experience Dedicated Just For You</div>
+          </div>
+        </div>
+
+        <div class="stage-text">
+          <p>You deserve a day where you don’t have to think about anything except unwinding.</p>
+          <p>Your second gift is a <strong>lymphatic drainage massage</strong> and <strong>private jacuzzi experience</strong> in <strong>Sheikh Zayed</strong>.</p>
+          <p>No rushing, no responsibilities — just time for yourself and a chance to recharge completely on your own.</p>
+        </div>
+
+        <!-- Two Core Feature Cards -->
+        <div class="spa-features-grid">
+          <div class="spa-feature-card">
+            <div class="spa-card-icon-wrap" aria-hidden="true">💆‍♀️</div>
+            <div class="spa-card-text">
+              <h3>Lymphatic Drainage Massage</h3>
+              <p>Gentle, restorative wellness technique designed to revitalize, de-puff, and rejuvenate your body.</p>
+            </div>
+          </div>
+
+          <div class="spa-feature-card">
+            <div class="spa-card-icon-wrap" aria-hidden="true">🫧</div>
+            <div class="spa-card-text">
+              <h3>Private Jacuzzi Relaxation</h3>
+              <p>Warm soothing waters and calming bubbles to melt away every ounce of tension in total privacy.</p>
+            </div>
+          </div>
+        </div>
+
+        <p style="font-size: 0.82rem; color: var(--blue-muted); margin-top: 0.5rem;">
+          <em>We'll pick your preferred date next, so I can coordinate the reservation for your schedule.</em>
+        </p>
+
+        <div class="button-group">
+          <button id="btn-to-calendar" class="btn btn-primary">
+            Let’s choose my massage &amp; jacuzzi day! 🗓️
+          </button>
+        </div>
+      </article>
+    </section>
+
+
+    <!-- ====================================================================
+         SCREEN 6: THE DATE PICKER
+         ==================================================================== -->
+    <section id="stage-6" class="stage-screen" aria-labelledby="stage-6-title">
+      <article class="card-glass card-center">
+        <span class="character-tag">Scheduling Your Pampering</span>
+
+        <h1 id="stage-6-title" class="stage-title">When should your relaxing day be? 🗓️</h1>
+
+        <div class="stage-text">
+          <p>Pick the date that works best for you. I’ll use your choice to arrange the details.</p>
+        </div>
+
+        <!-- Functional Calendar Widget -->
+        <div class="calendar-card" role="region" aria-label="Interactive Calendar">
+          <div class="calendar-header">
+            <button id="cal-prev-month" class="calendar-nav-btn" aria-label="Previous month">‹</button>
+            <div id="calendar-month-title" class="calendar-month-title" aria-live="polite">October 2026</div>
+            <button id="cal-next-month" class="calendar-nav-btn" aria-label="Next month">›</button>
+          </div>
+
+          <div class="calendar-weekdays" aria-hidden="true">
+            <div>Su</div><div>Mo</div><div>Tu</div><div>We</div><div>Th</div><div>Fr</div><div>Sa</div>
+          </div>
+
+          <div id="calendar-days-grid" class="calendar-days-grid" role="grid" aria-label="Month days"></div>
+
+          <!-- Selected Date Display -->
+          <div id="date-selected-banner" class="date-selected-banner" style="display: none;">
+            <span>Selected Date:</span>
+            <strong id="selected-date-text"></strong>
+          </div>
+
+          <!-- Empty Validation Warning -->
+          <div id="date-validation-error" class="validation-error" role="alert">
+            Please pick a preferred date on the calendar first!
+          </div>
+        </div>
+
+        <div class="button-group">
+          <button id="btn-confirm-date" class="btn btn-primary">
+            Confirm my preferred date ✨
+          </button>
+        </div>
+
+        <!-- Confirmation & WhatsApp Handoff Panel -->
+        <div id="date-confirmed-panel" style="display: none; width: 100%; margin-top: 1rem;">
+          <div class="confirmation-notice">
+            <h3 style="font-size: 1rem; font-weight: 800; margin-bottom: 0.35rem; color: #92400E;">
+              🗓️ Preferred Date Selected: <span id="confirmed-date-display"></span>
+            </h3>
+            <p>
+              This reserves your preferred timing! Please note this is your requested date so I can finalize the official reservation.
+            </p>
+          </div>
+
+          <div class="button-group" style="margin-top: 1rem;">
+            <button id="btn-change-date" class="btn btn-secondary">
+              ✏️ Review / Change date
+            </button>
+
+            <a id="btn-send-whatsapp" class="btn btn-whatsapp" href="#" target="_blank" rel="noopener noreferrer">
+              <span>💬 Send Date to Me via WhatsApp</span>
+            </a>
+            <p id="whatsapp-status-note" style="font-size: 0.75rem; color: var(--blue-muted); text-align: center; margin-top: -0.25rem;">
+            </p>
+
+            <button id="btn-to-coffee-stage" class="btn btn-primary" style="margin-top: 0.5rem;">
+              Continue to our coffee date plans ☕
+            </button>
+          </div>
+        </div>
+      </article>
+    </section>
+
+
+    <!-- ====================================================================
+         SCREEN 7: THE COFFEE DATE & INTERACTIVE SPOT PICKER
+         ==================================================================== -->
+    <section id="stage-7" class="stage-screen" aria-labelledby="stage-7-title">
+      <article class="card-glass card-center">
+        <span class="character-tag">The Reunion</span>
+
+        <div id="bubbles-avatar-7" class="bubbles-hero-container" aria-hidden="true"></div>
+
+        <h1 id="stage-7-title" class="stage-title">And then… coffee, obviously. ☕</h1>
+
+        <div class="stage-text" style="margin-bottom: 0.75rem;">
+          <p>
+            You enjoy your massage and jacuzzi, and afterwards, you and I meet for coffee.
+          </p>
+          <p>
+            Because a birthday celebration wouldn’t be complete without our coffee, our conversations, and us losing track of time again.
+          </p>
+          <p style="font-size: 0.9rem; font-weight: 700; color: var(--blue-deep); margin-top: 0.75rem;">
+            Where are we going? Pick your favourite spot:
+          </p>
+        </div>
+
+        <!-- Interactive Coffee Spot Picker -->
+        <div id="coffee-spots-container" class="coffee-picker-grid" role="radiogroup" aria-label="Choose your coffee spot">
+          <!-- Populated from config.js: Koffe Kulture, Starbucks, Daily Dose, Saints -->
+        </div>
+
+        <div class="button-group" style="margin-top: 1.25rem;">
+          <button id="btn-to-scrapbook" class="btn btn-primary">
+            One last thing… 🤍
+          </button>
+        </div>
+      </article>
+    </section>
+
+
+    <!-- ====================================================================
+         SCREEN 8: TO NONI — OUR LITTLE BOOK OF ACHIEVEMENTS 🤍
+         ==================================================================== -->
+    <section id="stage-8" class="stage-screen" aria-labelledby="stage-8-title">
+      <article class="card-glass card-center">
+        <span class="character-tag">A Gift From The Heart</span>
+
+        <div id="bubbles-avatar-8" class="bubbles-hero-container" aria-hidden="true"></div>
+
+        <!-- Book Header -->
+        <div class="book-header" style="width: 100%;">
+          <div class="book-super-title">Memory Keepsake</div>
+          <h1 id="stage-8-title" class="book-main-title">To Noni — Our Little Book of Achievements 🤍</h1>
+          <p style="font-size: 0.88rem; color: var(--blue-muted);">
+            Swipe or tap through the chapters of our story below:
+          </p>
+        </div>
+
+        <!-- Book Container -->
+        <div class="book-container">
+          <!-- Chapter Nav Pills Scroller -->
+          <nav id="chapter-nav-scroller" class="chapter-nav-scroller" aria-label="Book chapters">
+            <!-- Populated dynamically (Ch. 01 to Ch. 10) -->
+          </nav>
+
+          <!-- Active Chapter Page Content -->
+          <div id="chapter-content-page" class="chapter-content-page" role="region" aria-live="polite">
+            <!-- Populated dynamically by app.js -->
+          </div>
+
+          <!-- Chapter Navigation Footer -->
+          <div class="chapter-nav-footer">
+            <button id="btn-chapter-prev" class="btn-chapter-nav" disabled>
+              ← Previous Chapter
+            </button>
+            <button id="btn-chapter-next" class="btn-chapter-nav">
+              Next Chapter →
+            </button>
+          </div>
+        </div>
+
+        <!-- Final Sign-off Letter Card -->
+        <div class="final-letter-card" role="region" aria-label="Birthday Sign-off" style="width: 100%;">
+          <h2 class="letter-heading">
+            Happy birthday to my favourite person. 💙
+          </h2>
+          <div class="letter-body">
+            <p>You deserve to be celebrated — today and always.</p>
+            <p>Love you endlessly!</p>
+          </div>
+          <div class="letter-signature">
+            — Your Partner in Chaos 🤍✨
+          </div>
+        </div>
+
+        <!-- Replay Mission Button -->
+        <div class="button-group">
+          <button id="btn-replay-mission" class="btn btn-secondary">
+            🔄 Replay my birthday mission
+          </button>
+        </div>
+      </article>
+    </section>
+
+  </main>
+
+  <footer class="app-footer">
+    Crafted with 💙 for <span class="var-recipient-name">Noni</span>’s Birthday
+  </footer>
+
+  <!-- Photo Zoom Lightbox Modal -->
+  <div id="photo-lightbox" class="photo-lightbox" role="dialog" aria-modal="true" aria-label="Enlarged photo view">
+    <img id="photo-lightbox-img" class="photo-lightbox-img" src="" alt="Enlarged memory photo">
+  </div>
+
+  <!-- Scripts -->
+  <script src="config.js"></script>
+  <script src="js/bubbles-art.js"></script>
+  <script src="js/calendar.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
