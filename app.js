@@ -206,7 +206,8 @@
       if (container) {
         const isGiggle = (stageNum === 2 && (customMood === 'giggle' || customMood === 'excuse_me'));
         const imgSrc = isGiggle ? 'assets/bubbles_giggle.jpg' : 'assets/bubbles_hero.jpg';
-        container.innerHTML = `<img src="${imgSrc}" alt="Bubbles from The Powerpuff Girls" class="bubbles-avatar-img" loading="eager" />`;
+        const fallbackMood = isGiggle ? 'giggle' : (stageNum === 3 ? 'cinema' : (stageNum === 4 ? 'gift' : (stageNum === 5 ? 'spa' : (stageNum === 6 ? 'calendar' : (stageNum === 7 ? 'coffee' : (stageNum === 8 ? 'camera' : 'wave'))))));
+        container.innerHTML = `<img src="${imgSrc}" alt="Bubbles" class="bubbles-avatar-img" onerror="if(window.BubblesArt){this.style.display='none';this.insertAdjacentHTML('afterend', window.BubblesArt.getSVG('${fallbackMood}'));}" loading="eager" />`;
       }
     }
   }

@@ -26,9 +26,7 @@ def build_standalone():
     with open(os.path.join(base_dir, 'js', 'app.js'), 'r', encoding='utf-8') as f:
         app_js = f.read()
 
-    # Convert chapter images in config.js to base64 data URIs
-    def img_to_b64(match):
-        rel_path = match.group(1)
+    def file_to_b64(rel_path):
         full_path = os.path.join(base_dir, rel_path.replace('/', os.sep))
         if os.path.exists(full_path):
             ext = os.path.splitext(full_path)[1].lower().replace('.', '')
@@ -36,10 +34,22 @@ def build_standalone():
                 ext = 'jpeg'
             with open(full_path, 'rb') as img_f:
                 b64_str = base64.b64encode(img_f.read()).decode('utf-8')
-            return f'image: "data:image/{ext};base64,{b64_str}"'
-        return match.group(0)
+            return f'data:image/{ext};base64,{b64_str}'
+        return rel_path
 
-    config_js_b64 = re.sub(r'image:\s*"([^"]+)"', img_to_b64, config_js)
+    # Convert chapter images in config.js to base64 data URIs
+    def img_to_b64_match(match):
+        rel_path = match.group(1)
+        b64_uri = file_to_b64(rel_path)
+        return f'image: "{b64_uri}"'
+
+    config_js_b64 = re.sub(r'image:\s*"([^"]+)"', img_to_b64_match, config_js)
+
+    # Convert Bubbles hero and giggle images in app.js to base64 data URIs
+    bubbles_hero_b64 = file_to_b64('assets/bubbles_hero.jpg')
+    bubbles_giggle_b64 = file_to_b64('assets/bubbles_giggle.jpg')
+    app_js_b64 = app_js.replace("'assets/bubbles_hero.jpg'", f'"{bubbles_hero_b64}"')
+    app_js_b64 = app_js_b64.replace("'assets/bubbles_giggle.jpg'", f'"{bubbles_giggle_b64}"')
 
     # Combine CSS
     combined_css = f"<style>\n/* --- style.css --- */\n{style_css}\n\n/* --- animations.css --- */\n{animations_css}\n</style>"
@@ -51,7 +61,7 @@ def build_standalone():
     )
 
     # Combine JS
-    combined_js = f"<script>\n/* --- config.js --- */\n{config_js_b64}\n\n/* --- bubbles-art.js --- */\n{bubbles_art_js}\n\n/* --- calendar.js --- */\n{calendar_js}\n\n/* --- app.js --- */\n{app_js}\n</script>"
+    combined_js = f"<script>\n/* --- config.js --- */\n{config_js_b64}\n\n/* --- bubbles-art.js --- */\n{bubbles_art_js}\n\n/* --- calendar.js --- */\n{calendar_js}\n\n/* --- app.js --- */\n{app_js_b64}\n</script>"
 
     html_bundled = re.sub(
         r'<script\s+src="config\.js"></script>\s*<script\s+src="js/bubbles-art\.js"></script>\s*<script\s+src="js/calendar\.js"></script>\s*<script\s+src="js/app\.js"></script>',
